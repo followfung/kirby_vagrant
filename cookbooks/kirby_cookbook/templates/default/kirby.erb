@@ -1,0 +1,51 @@
+server {
+  listen 80 default_server;
+  server_name localhost;
+
+  include /etc/nginx/mime.types;
+  root <%= node['nginx']['www_dir'] %>/<%= node['kirby']['dir_name'] %>;
+  index  index.php index.html index.htm;
+  
+  access_log <%= node['nginx']['access_log'] %>;
+  error_log  <%= node['nginx']['error_log'] %>;
+
+  # Don't hint these as folders
+  rewrite ^/(content|site|kirby)$ /error last;
+
+  # block content
+  rewrite ^/content/(.*).(txt|md|mdown)$ /error last;
+
+  # block all files in the site and kirby folder from being accessed directly
+  rewrite ^/(site|kirby)/(.*)$ /error last;
+
+  # site links
+  location / {
+      try_files $uri $uri/ /index.php?$uri&$args;
+  }
+
+  # panel links
+  location /panel {
+      try_files $uri $uri/ /panel/index.php?$uri&$args;
+  }
+
+  # Prevent clients from accessing hidden files (starting with a dot)
+  # This is particularly important if you store .htpasswd files in the site hierarchy
+  location ~ (?:^|/)\. {
+      deny all;
+  }
+
+  # Prevent clients from accessing to backup/config/source files
+  location ~ (?:\.(?:bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist)|~)$ {
+      deny all;
+  }
+
+  location ~ \.php$ {
+    try_files $uri =404;
+    fastcgi_pass unix:/var/run/php5-fpm.sock;
+    fastcgi_index index.php;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    fastcgi_param PATH_INFO $fastcgi_script_name;
+    include fastcgi_params;
+  }
+}
+
