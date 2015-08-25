@@ -13,4 +13,7 @@ This configuration was developed with the following configuration, but later ver
 * vagrant-berkshelf `v4.0.4`
 * vagrant-omnibus `v1.4.1`
 
-## TODO: Usage
+## Usage
+1. `git clone https://github.com/followfung/kirby_vagrant && cd kirby_vagrant`
+2. `vagrant up`
+3. Visit http://localhost:8080 to see your Kirby instance in action!
