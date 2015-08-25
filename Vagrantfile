@@ -14,7 +14,7 @@ Vagrant.configure(2) do |config|
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   config.vm.provider 'virtualbox' do |vb|
-    vb.customize ['modifyvm', :id, '--memory', '2048']
+    vb.customize ['modifyvm', :id, '--memory', '1024']
     vb.customize ['modifyvm', :id, '--cpus', '2']
     vb.customize ['modifyvm', :id, '--ioapic', 'on']
   end
