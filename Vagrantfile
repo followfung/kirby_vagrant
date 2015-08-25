@@ -29,7 +29,7 @@ Vagrant.configure(2) do |config|
   config.vm.provision :chef_solo do |chef|
     chef.json = {
       kirby: {
-        kirby_url: 'http://localhost:8080',
+        url: 'http://localhost:8080',
         vagrant_share: '/vagrant'
       }
     }

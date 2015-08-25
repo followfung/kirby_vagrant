@@ -20,6 +20,7 @@ if node['kirby']['vagrant_share']
     command "git clone --recursive https://github.com/getkirby/starterkit.git #{node['kirby']['dir_name']}"
     cwd node['kirby']['vagrant_share']
     user 'vagrant'
+    creates "#{kirby_dir}/index.php"
   end
 
   # symlink Kirby directory to Vagrant shared folder
@@ -33,6 +34,7 @@ else
   execute 'clone kirby starterkit from git' do
     command "git clone --recursive https://github.com/getkirby/starterkit.git #{node['kirby']['dir_name']}"
     cwd node['nginx']['www_dir']
+    creates "#{kirby_dir}/index.php"
   end
 
   # give www-data user permissions over Kirby directory
@@ -44,4 +46,9 @@ end
 # install Kirby config file
 template "#{kirby_dir}/site/config/config.php" do
   source 'config.php.erb'
+end
+
+# install Kirby site.txt file
+template "#{kirby_dir}/content/site.txt" do
+  source 'site.txt.erb'
 end

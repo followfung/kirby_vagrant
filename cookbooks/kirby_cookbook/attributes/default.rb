@@ -1,6 +1,14 @@
 # Kirby application settings
-default['kirby']['kirby_url'] = nil
-default['kirby']['kirby_license'] = 'put your license key here'
+default['kirby']['license'] = 'put your license key here'
+default['kirby']['url'] = nil
+
+default['kirby']['site_title'] = 'Kirby Starterkit'
+default['kirby']['site_author'] = 'Bastian Allgeier GmbH'
+default['kirby']['site_description'] = 'This is Kirby\'s Starterkit.'
+default['kirby']['site_keywords'] = 'Kirby, CMS, file-based'
+default['kirby']['site_copyright_from'] = '2009'
+default['kirby']['site_copyright_link'] = 'http://getkirby.com'
+default['kirby']['site_copyright_text'] = 'Kirby'
 
 # If provisioning on a Vagrant VM, set this to where your
 # shared folder is mounted, usually this will be /vagrant
