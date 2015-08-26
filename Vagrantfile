@@ -30,7 +30,7 @@ Vagrant.configure(2) do |config|
     chef.json = {
       kirby: {
         url: 'http://localhost:8080',
-        vagrant_share: '/vagrant'
+        install_type: 'vagrant'
       }
     }
 

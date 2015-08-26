@@ -10,17 +10,10 @@ default['kirby']['site_copyright_from'] = '2009'
 default['kirby']['site_copyright_link'] = 'http://getkirby.com'
 default['kirby']['site_copyright_text'] = 'Kirby'
 
-# If provisioning on a Vagrant VM, set this to where your
-# shared folder is mounted, usually this will be /vagrant
-default['kirby']['vagrant_share'] = nil
-
 ############################################################
 ### Don't edit below here unless you are an expert!      ###
 ### Seriously, consider yourself warned.                 ###
 ############################################################
-
-# Server configuration
-default['kirby']['dir_name'] = 'kirby' # kirby web directory name
 
 # PHP packages required for Kirby
 default['php']['packages'] = %w(
@@ -33,3 +26,25 @@ default['nginx']['www_dir'] = '/var/www'
 default['nginx']['default_site_enabled'] = false
 default['nginx']['access_log'] = '/var/log/nginx/access.log'
 default['nginx']['error_log'] = '/var/log/nginx/error.log'
+
+# Kirby server configuration
+default['kirby']['dir_name'] = 'kirby' # kirby web directory name
+default['kirby']['install_type'] = 'local' # local or vagrant
+
+# If provisioning on a Vagrant VM, set this to where your
+# shared folder is mounted, usually this will be /vagrant
+default['kirby']['vagrant_share'] = '/vagrant'
+
+############################################################
+### Never edit below here even if you are an expert!     ###
+### You'll probably break everything.                    ###
+############################################################
+
+default['kirby']['kirby_root'] = "#{default['nginx']['www_dir']}/#{default['kirby']['dir_name']}"
+
+case node['kirby']['install_type']
+when 'local'
+  default['kirby']['install_path'] = "#{default['nginx']['www_dir']}/#{default['kirby']['dir_name']}"
+when 'vagrant'
+  default['kirby']['install_path'] = "#{default['kirby']['vagrant_share']}/#{default['kirby']['dir_name']}"
+end

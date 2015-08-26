@@ -10,45 +10,29 @@ include_recipe 'kirby_cookbook::php'
 include_recipe 'nginx'
 include_recipe 'kirby_cookbook::nginx'
 
-# this is the root directory of kirby
-kirby_dir = "#{node['nginx']['www_dir']}/#{node['kirby']['dir_name']}"
+# grab Kirby Starterkit from GitHub
+execute "install Kirby to #{node['kirby']['install_path']}" do
+  command "git clone --recursive https://github.com/getkirby/starterkit.git #{node['kirby']['install_path']}"
+  creates "#{node['kirby']['install_path']}/index.php"
+end
 
-# grab kirby starterkit from git
-if node['kirby']['vagrant_share']
-  # install Kirby to Vagrant shared folder
-  execute 'clone kirby starterkit from git' do
-    command "git clone --recursive https://github.com/getkirby/starterkit.git #{node['kirby']['dir_name']}"
-    cwd node['kirby']['vagrant_share']
-    user 'vagrant'
-    creates "#{kirby_dir}/index.php"
-  end
+# symlink Kirby directory to Vagrant shared folder
+link node['kirby']['kirby_root'] do
+  to node['kirby']['install_path']
+  only_if { node['kirby']['install_type'].eql?('vagrant') }
+end
 
-  # symlink Kirby directory to Vagrant shared folder
-  link kirby_dir do
-    to "#{node['kirby']['vagrant_share']}/#{node['kirby']['dir_name']}"
-    owner 'www-data'
-    group 'www-data'
-  end
-else
-  # install Kirby locally
-  execute 'clone kirby starterkit from git' do
-    command "git clone --recursive https://github.com/getkirby/starterkit.git #{node['kirby']['dir_name']}"
-    cwd node['nginx']['www_dir']
-    creates "#{kirby_dir}/index.php"
-  end
-
-  # give www-data user permissions over Kirby directory
-  execute 'change permissions' do
-    command "chown -R www-data:www-data #{kirby_dir}"
-  end
+# give www-data user permissions over Kirby directory
+execute "give www-data ownership of #{node['kirby']['kirby_root']}" do
+  command "chown -R www-data:www-data #{node['kirby']['kirby_root']}"
 end
 
 # install Kirby config file
-template "#{kirby_dir}/site/config/config.php" do
+template "#{node['kirby']['kirby_root']}/site/config/config.php" do
   source 'config.php.erb'
 end
 
 # install Kirby site.txt file
-template "#{kirby_dir}/content/site.txt" do
+template "#{node['kirby']['kirby_root']}/content/site.txt" do
   source 'site.txt.erb'
 end
