@@ -12,6 +12,8 @@ server {
   access_log <%= node['nginx']['access_log'] %>;
   error_log  <%= node['nginx']['error_log'] %>;
 
+  # Thanks to JimmyRittenborg for this part of the nginx config! https://gist.github.com/bastianallgeier/c2e1f1e519f5f2943ec4#gistcomment-1556246
+
   # Don't hint these as folders
   rewrite ^/(content|site|kirby)$ /error last;
 
