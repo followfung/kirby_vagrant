@@ -40,11 +40,11 @@ default['kirby']['vagrant_share'] = '/vagrant'
 ### You'll probably break everything.                    ###
 ############################################################
 
-default['kirby']['kirby_root'] = "#{default['nginx']['www_dir']}/#{default['kirby']['dir_name']}"
+default['kirby']['kirby_root'] = "#{node['nginx']['www_dir']}/#{node['kirby']['dir_name']}"
 
 case node['kirby']['install_type']
 when 'local'
-  default['kirby']['install_path'] = "#{default['nginx']['www_dir']}/#{default['kirby']['dir_name']}"
+  default['kirby']['install_path'] = "#{node['nginx']['www_dir']}/#{node['kirby']['dir_name']}"
 when 'vagrant'
-  default['kirby']['install_path'] = "#{default['kirby']['vagrant_share']}/#{default['kirby']['dir_name']}"
+  default['kirby']['install_path'] = "#{node['kirby']['vagrant_share']}/#{node['kirby']['dir_name']}"
 end
