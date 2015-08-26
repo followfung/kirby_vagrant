@@ -14,7 +14,8 @@ service 'nginx' do
   action :reload
 end
 
-# for some reason nginx cookbook doesn't create this directory?
-directory '/var/www' do
+directory node['nginx']['www_dir'] do
   recursive true
+  owner 'www-data'
+  group 'www-data'
 end
