@@ -34,6 +34,6 @@ Vagrant.configure(2) do |config|
       }
     }
 
-    chef.add_recipe 'kirby_cookbook'
+    chef.add_recipe 'lemp_webserver'
   end
 end

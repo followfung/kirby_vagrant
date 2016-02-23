@@ -1,6 +1,8 @@
 DEPENDENCIES
   kirby_cookbook
     path: cookbooks/kirby_cookbook
+  lemp_webserver
+    path: cookbooks/lemp_webserver
 
 GRAPH
   apt (2.8.2)
@@ -9,6 +11,7 @@ GRAPH
   build-essential (2.2.3)
   kirby_cookbook (0.1.0)
     nginx (~> 2.7.6)
+  lemp_webserver (0.1.0)
   nginx (2.7.6)
     apt (~> 2.2)
     bluepill (~> 2.3)
