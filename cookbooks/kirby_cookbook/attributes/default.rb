@@ -27,6 +27,7 @@ default['kirby']['install_type'] = 'local' # local or vagrant
 
 # If provisioning on a Vagrant VM, set this to where your
 # shared folder is mounted, usually this will be /vagrant
+default['kirby']['nginx_server_name'] = 'localhost'
 default['kirby']['vagrant_share'] = '/vagrant'
 
 ############################################################
