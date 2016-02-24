@@ -1,39 +1,49 @@
-# All Vagrant configuration is done below. The "2" in Vagrant.configure
-# configures the configuration version (we support older styles for
-# backwards compatibility). Please don't change it unless you know what
-# you're doing.
 Vagrant.configure(2) do |config|
-  # Every Vagrant development environment requires a box. You can search for
-  # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = 'ubuntu/trusty64'
+  # Configuration variables for this VM
+  conf = {
+    vm_box: 'ubuntu/trusty64', # https://atlas.hashicorp.com/bento/boxes/centos-7.1
+    private_network_ip: '192.168.33.10',
+    vm_hostname: 'vagrant.dev', # Access our AtoM instance at http://atom.dev
+    vm_memory: 4096,
+    vm_cpus: 2,
+    chefdk_version: '0.8.0'
+  }
 
-  # Create a forwarded port mapping which allows access to a specific port
-  # within the machine from a port on the host machine.
-  config.vm.network 'forwarded_port', guest: 80, host: 8080
+  config.vm.box = conf[:vm_box]
 
-  # Provider-specific configuration so you can fine-tune various
-  # backing providers for Vagrant. These expose provider-specific options.
-  config.vm.provider 'virtualbox' do |vb|
-    vb.customize ['modifyvm', :id, '--memory', '1024']
-    vb.customize ['modifyvm', :id, '--cpus', '2']
-    vb.customize ['modifyvm', :id, '--ioapic', 'on']
+  config.ssh.forward_agent = true
+  config.vm.box_check_update = true
+
+  config.vm.hostname = conf[:vm_hostname]
+  config.vm.network 'private_network', ip: conf[:private_network_ip]
+
+  if Vagrant.has_plugin?('vagrant-hostsupdater')
+    config.hostsupdater.remove_on_suspend = true
   end
 
-  # Enable Berkshelf
-  config.berkshelf.enabled = true
+  config.vm.provider 'virtualbox' do |vb|
+    vb.name = conf[:vm_hostname]
+    vb.memory = conf[:vm_memory]
+    vb.cpus = conf[:vm_cpus]
 
-  # Lock Chef version to 12.4.0
-  config.omnibus.chef_version = '12.4.0'
+    vb.customize ['modifyvm', :id, '--ioapic', 'on'] if conf[:vm_cpus] > 1
+    vb.customize ['modifyvm', :id, '--natdnsproxy1', 'on']
+    vb.customize ['modifyvm', :id, '--natdnshostresolver1', 'on']
+  end
 
-  # Provision with chef_solo
+  config.berkshelf.enabled = true # enable berkshelf
+  config.omnibus.chef_version = '12.3.0' # version pin 12.3.0
+
   config.vm.provision :chef_solo do |chef|
     chef.json = {
       kirby: {
-        url: 'http://localhost:8080',
-        install_type: 'vagrant'
+        url: 'http://vagrant.dev',
+        install_type: 'vagrant',
+        nginx_server_name: conf[:vm_hostname]
       }
     }
 
-    chef.add_recipe 'kirby_cookbook'
+    chef.add_recipe 'lemp_webserver'
+    chef.add_recipe 'kirby'
   end
 end

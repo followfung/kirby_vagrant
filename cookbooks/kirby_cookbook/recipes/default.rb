@@ -1,14 +1,11 @@
 #
-# Cookbook Name:: kirby_cookbook
+# Cookbook Name:: kirby
 # Recipe:: default
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
 # install and configure dependencies
-package 'git'
-include_recipe 'kirby_cookbook::php'
-include_recipe 'nginx'
-include_recipe 'kirby_cookbook::nginx'
+include_recipe 'kirby::nginx'
 
 # grab Kirby Starterkit from GitHub
 execute "install Kirby to #{node['kirby']['install_path']}" do

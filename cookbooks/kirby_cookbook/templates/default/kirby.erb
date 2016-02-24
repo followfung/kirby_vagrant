@@ -3,7 +3,7 @@
 
 server {
   listen 80 default_server;
-  server_name localhost;
+  server_name <%= node['kirby']['nginx_server_name'] %>;
 
   include /etc/nginx/mime.types;
   root <%= node['nginx']['www_dir'] %>/<%= node['kirby']['dir_name'] %>;

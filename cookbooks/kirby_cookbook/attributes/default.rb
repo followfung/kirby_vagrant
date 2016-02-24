@@ -15,12 +15,6 @@ default['kirby']['site_copyright_text'] = 'Kirby'
 ### Seriously, consider yourself warned.                 ###
 ############################################################
 
-# PHP packages required for Kirby
-default['php']['packages'] = %w(
-  php5
-  php5-fpm
-)
-
 # nginx
 default['nginx']['www_dir'] = '/var/www'
 default['nginx']['default_site_enabled'] = false
@@ -33,6 +27,7 @@ default['kirby']['install_type'] = 'local' # local or vagrant
 
 # If provisioning on a Vagrant VM, set this to where your
 # shared folder is mounted, usually this will be /vagrant
+default['kirby']['nginx_server_name'] = 'localhost'
 default['kirby']['vagrant_share'] = '/vagrant'
 
 ############################################################
