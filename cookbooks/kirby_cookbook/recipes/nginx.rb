@@ -7,11 +7,7 @@
 # enable nginx config for kirby
 nginx_site 'kirby' do
   template 'kirby.erb'
-end
-
-# Reload nginx because nginx_site doesnt?
-service 'nginx' do
-  action :reload
+  notifies :reload, 'service[nginx]', :delayed
 end
 
 directory node['nginx']['www_dir'] do

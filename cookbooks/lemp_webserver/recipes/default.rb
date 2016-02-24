@@ -6,6 +6,8 @@
 
 # install git
 package 'git'
+include_recipe 'php'
+include_recipe 'nginx'
 
 # Configure sshd: Disable password authentication and root login
 openssh_server node['sshd']['config_file'] do

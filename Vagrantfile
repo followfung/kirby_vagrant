@@ -43,8 +43,6 @@ Vagrant.configure(2) do |config|
       }
     }
 
-    chef.add_recipe 'php'
-    chef.add_recipe 'nginx'
     chef.add_recipe 'lemp_webserver'
     chef.add_recipe 'kirby'
   end

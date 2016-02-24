@@ -28,8 +28,3 @@ end
 template "#{node['kirby']['kirby_root']}/site/config/config.php" do
   source 'config.php.erb'
 end
-
-# install Kirby site.txt file
-template "#{node['kirby']['kirby_root']}/content/site.txt" do
-  source 'site.txt.erb'
-end

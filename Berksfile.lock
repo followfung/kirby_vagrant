@@ -1,11 +1,8 @@
 DEPENDENCIES
-  firewall (~> 2.4.0)
   kirby
     path: cookbooks/kirby_cookbook
   lemp_webserver
     path: cookbooks/lemp_webserver
-  nginx (~> 2.7.6)
-  php (~> 1.7.2)
 
 GRAPH
   7-zip (1.0.2)
