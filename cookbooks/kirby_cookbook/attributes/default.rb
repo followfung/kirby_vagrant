@@ -15,12 +15,6 @@ default['kirby']['site_copyright_text'] = 'Kirby'
 ### Seriously, consider yourself warned.                 ###
 ############################################################
 
-# PHP packages required for Kirby
-default['php']['packages'] = %w(
-  php5
-  php5-fpm
-)
-
 # nginx
 default['nginx']['www_dir'] = '/var/www'
 default['nginx']['default_site_enabled'] = false
