@@ -1,9 +1,9 @@
 Vagrant.configure(2) do |config|
   # Configuration variables for this VM
   conf = {
-    vm_box: 'ubuntu/trusty64', # https://atlas.hashicorp.com/bento/boxes/centos-7.1
+    vm_box: 'ubuntu/trusty64', 
     private_network_ip: '192.168.33.10',
-    vm_hostname: 'vagrant.dev', # Access our AtoM instance at http://atom.dev
+    vm_hostname: 'vagrant.dev', 
     vm_memory: 4096,
     vm_cpus: 2,
     chefdk_version: '0.8.0'
