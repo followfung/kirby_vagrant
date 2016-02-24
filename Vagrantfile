@@ -36,9 +36,6 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision :chef_solo do |chef|
     chef.json = {
-      firewall: {
-        allow_ssh: true
-      },
       kirby: {
         url: 'http://localhost:8080',
         install_type: 'vagrant'
