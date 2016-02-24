@@ -32,12 +32,6 @@ firewall_rule 'http' do
   action :create
 end
 
-# PHP
-include_recipe 'php'
-
 php_fpm_pool "default" do
   action :install
 end
-
-# nginx
-include_recipe 'nginx'

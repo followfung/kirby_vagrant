@@ -37,12 +37,14 @@ Vagrant.configure(2) do |config|
   config.vm.provision :chef_solo do |chef|
     chef.json = {
       kirby: {
-        url: 'http://vagrant.dev',
+        url: 'http://' + conf[:vm_hostname],
         install_type: 'vagrant',
         nginx_server_name: conf[:vm_hostname]
       }
     }
 
+    chef.add_recipe 'php'
+    chef.add_recipe 'nginx'
     chef.add_recipe 'lemp_webserver'
     chef.add_recipe 'kirby'
   end
