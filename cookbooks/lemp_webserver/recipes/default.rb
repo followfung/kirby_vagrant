@@ -4,6 +4,9 @@
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
+# install git
+package 'git'
+
 # Configure sshd: Disable password authentication and root login
 openssh_server node['sshd']['config_file'] do
   cookbook 'lemp_webserver'
@@ -21,3 +24,20 @@ firewall_rule 'ssh' do
   command  :allow
   action :create
 end
+
+# Allow HTTP
+firewall_rule 'http' do
+  port     80
+  command  :allow
+  action :create
+end
+
+# PHP
+include_recipe 'php'
+
+php_fpm_pool "default" do
+  action :install
+end
+
+# nginx
+include_recipe 'nginx'
