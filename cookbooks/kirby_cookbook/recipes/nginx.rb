@@ -10,6 +10,7 @@ nginx_site 'kirby' do
   notifies :reload, 'service[nginx]', :delayed
 end
 
+# create public web directory
 directory node['nginx']['www_dir'] do
   recursive true
   owner 'www-data'
