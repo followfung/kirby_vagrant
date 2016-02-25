@@ -72,6 +72,8 @@ default['nginx']['default_site_enabled'] = false
 default['kirby']['dir_name'] = 'kirby' # kirby web directory name
 default['kirby']['install_type'] = 'local' # local or vagrant
 
+default['kirby']['git_repo'] = 'git://github.com/getkirby/starterkit.git'
+
 # If provisioning on a Vagrant VM, set this to where your
 # shared folder is mounted, usually this will be /vagrant
 default['kirby']['nginx_server_name'] = 'localhost'

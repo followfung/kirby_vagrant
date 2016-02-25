@@ -9,7 +9,7 @@ include_recipe 'kirby::nginx'
 
 # grab Kirby Starterkit from GitHub
 git node['kirby']['install_path'] do
-  repository        'git://github.com/getkirby/starterkit.git'
+  repository node['kirby']['git_repo']
   enable_submodules true
 end
 
