@@ -32,6 +32,46 @@ make Kirby work. For more fine-grained configuration
 of the system, please check out http://getkirby.com/docs/advanced/options
 
 */
-<% if node['kirby']['url'] %>
-c::set('url', '<%= node['kirby']['url']%>');
-<% end %>
+c::set('cache', <%= node['kirby']['options']['cache'].to_s %>);
+c::set('cache.autoupdate', <%= node['kirby']['options']['cache.autoupdate'].to_s %>);
+c::set('cache.driver', '<%= node['kirby']['options']['cache.driver'] %>');
+<%# TODO: cache.ignore %>
+<%# TODO: cache.options %>
+c::set('content.file.extension', '<%= node['kirby']['options']['content.file.extension'] %>');
+<%# TODO: content.file.ignore %>
+<%# TODO: css.handler %>
+c::set('date.handler', '<%= node['kirby']['options']['date.handler'] %>');
+c::set('debug', <%= node['kirby']['options']['debug'].to_s %>);
+c::set('error', '<%= node['kirby']['options']['error'] %>');
+<%# TODO: headers %>
+c::set('home', '<%= node['kirby']['options']['home'] %>');
+<%# TODO: js.handler %>
+c::set('kirbytext.image.figure', <%= node['kirby']['options']['kirbytext.image.figure'].to_s %>);
+c::set('kirbytext.video.class', '<%= node['kirby']['options']['kirbytext.video.class'] %>');
+c::set('kirbytext.video.height', <%= node['kirby']['options']['kirbytext.video.height'].to_s %>);
+c::set('kirbytext.video.width', <%= node['kirby']['options']['kirbytext.video.width'].to_s %>);
+c::set('language.detect', <%= node['kirby']['options']['language.detect'].to_s %>);
+<%# TODO: languages %>
+c::set('locale', '<%= node['kirby']['options']['locale'] %>');
+c::set('markdown', <%= node['kirby']['options']['markdown'].to_s %>);
+c::set('markdown.breaks', <%= node['kirby']['options']['markdown.breaks'].to_s %>);
+c::set('markdown.extra', <%= node['kirby']['options']['markdown.extra'].to_s %>);
+<%# TODO: markdown.parser %>
+c::set('panel.info.license', <%= node['kirby']['options']['panel.info.license'].to_s %>);
+c::set('panel.info.versions', <%= node['kirby']['options']['panel.info.versions'].to_s %>);
+c::set('panel.kirbytext', <%= node['kirby']['options']['panel.kirbytext'].to_s %>);
+c::set('panel.language', '<%= node['kirby']['options']['panel.language'] %>');
+c::set('panel.session.timeout', <%= node['kirby']['options']['panel.session.timeout'] %>);
+<%# TODO: panel.stylesheet %>
+c::set('rewrite', <%= node['kirby']['options']['rewrite'].to_s %>);
+<%# TODO: roles %>
+<%# TODO: routes %>
+c::set('smartypants', <%= node['kirby']['options']['smartypants'].to_s %>);
+<%# TODO: smartypants.parser %>
+c::set('ssl', <%= node['kirby']['options']['ssl'].to_s %>);
+c::set('thumbs.driver', '<%= node['kirby']['options']['thumbs.driver'] %>');
+c::set('thumbs.filename', '<%= node['kirby']['options']['thumbs.filename'] %>');
+c::set('timezone', '<%= node['kirby']['options']['timezone'] %>');
+c::set('tinyurl.enabled', <%= node['kirby']['options']['tinyurl.enabled'].to_s %>);
+c::set('tinyurl.folder', '<%= node['kirby']['options']['tinyurl.folder'] %>');
+c::set('url', <%= node['kirby']['options']['url'].to_s %>);
