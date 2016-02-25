@@ -36,6 +36,9 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision :chef_solo do |chef|
     chef.json = {
+      lemp_webserver: {
+        skip_mysql: true
+      },
       kirby: {
         url: 'http://' + conf[:vm_hostname],
         install_type: 'vagrant',

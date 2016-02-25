@@ -19,6 +19,7 @@ mysql_service 'default' do
   version '5.6'
   initial_root_password 'please change me'
   action [:create, :start]
+  not_if { node['lemp_webserver']['skip_mysql'] }
 end
 
 # Configure sshd: Disable password authentication and root login
