@@ -1,16 +1,3 @@
-# Kirby application settings
-default['kirby']['license'] = 'put your license key here'
-default['kirby']['url'] = nil
-
-default['kirby']['site_title'] = 'Kirby Starterkit'
-default['kirby']['site_author'] = 'Bastian Allgeier GmbH'
-default['kirby']['site_description'] = 'This is Kirby\'s Starterkit.'
-default['kirby']['site_keywords'] = 'Kirby, CMS, file-based'
-default['kirby']['site_copyright_from'] = '2009'
-default['kirby']['site_copyright_link'] = 'http://getkirby.com'
-default['kirby']['site_copyright_text'] = 'Kirby'
-
-
 # Advanced configuration options. These are set to be the defaults
 # from the Kirby docs. More info: https://getkirby.com/docs/cheatsheet#options
 default['kirby']['options']['cache'] = false
@@ -42,7 +29,7 @@ default['kirby']['options']['kirbytext.video.height'] = false
 default['kirby']['options']['kirbytext.video.width'] = false
 default['kirby']['options']['language.detect'] = false
 default['kirby']['options']['languages'] = []
-default['kirby']['options']['license'] = nil
+default['kirby']['options']['license'] = 'put your license key here'
 default['kirby']['options']['locale'] = 'en_US.UTF8'
 default['kirby']['options']['markdown'] = true
 default['kirby']['options']['markdown.breaks'] = true
