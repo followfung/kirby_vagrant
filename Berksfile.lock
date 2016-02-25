@@ -23,6 +23,7 @@ GRAPH
     nginx (~> 2.7.6)
   lemp_webserver (0.1.0)
     firewall (~> 2.4.0)
+    mysql (~> 6.1.2)
     nginx (~> 2.7.6)
     php (~> 1.7.2)
     sshd (~> 1.1.3)

@@ -6,8 +6,20 @@
 
 # install git
 package 'git'
+
+# install php
 include_recipe 'php'
+
+# install nginx
 include_recipe 'nginx'
+
+# Create and start MySQL instance
+mysql_service 'default' do
+  bind_address '127.0.0.1'
+  version '5.6'
+  initial_root_password 'please change me'
+  action [:create, :start]
+end
 
 # Configure sshd: Disable password authentication and root login
 openssh_server node['sshd']['config_file'] do
