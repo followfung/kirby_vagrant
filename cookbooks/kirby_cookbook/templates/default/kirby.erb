@@ -6,7 +6,7 @@ server {
   server_name <%= node['kirby']['nginx_server_name'] %>;
 
   include /etc/nginx/mime.types;
-  root <%= node['nginx']['www_dir'] %>/<%= node['kirby']['dir_name'] %>;
+  root <%= node['kirby']['kirby_root'] %>;
   index  index.php index.html index.htm;
   
   access_log <%= node['nginx']['access_log'] %>;
