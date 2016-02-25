@@ -8,9 +8,9 @@
 include_recipe 'kirby::nginx'
 
 # grab Kirby Starterkit from GitHub
-execute "install Kirby to #{node['kirby']['install_path']}" do
-  command "git clone --recursive https://github.com/getkirby/starterkit.git #{node['kirby']['install_path']}"
-  creates "#{node['kirby']['install_path']}/index.php"
+git node['kirby']['install_path'] do
+  repository        'git://github.com/getkirby/starterkit.git'
+  enable_submodules true
 end
 
 # symlink Kirby directory to Vagrant shared folder
