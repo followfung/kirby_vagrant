@@ -5,8 +5,7 @@ Vagrant.configure(2) do |config|
     private_network_ip: '192.168.33.10',
     vm_hostname: 'vagrant.dev', 
     vm_memory: 4096,
-    vm_cpus: 2,
-    chefdk_version: '0.8.0'
+    vm_cpus: 2
   }
 
   config.vm.box = conf[:vm_box]
