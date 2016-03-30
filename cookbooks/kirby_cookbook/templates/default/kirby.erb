@@ -3,14 +3,14 @@
 
 server {
   listen 80 default_server;
-  server_name <%= node['kirby']['nginx_server_name'] %>;
+  server_name <%= node['kirby']['server_name'] %>;
 
   include /etc/nginx/mime.types;
   root <%= node['kirby']['kirby_root'] %>;
   index  index.php index.html index.htm;
   
-  access_log <%= node['nginx']['access_log'] %>;
-  error_log  <%= node['nginx']['error_log'] %>;
+  access_log <%= node['kirby']['access_log'] %>;
+  error_log  <%= node['kirby']['error_log'] %>;
 
   # Thanks to JimmyRittenborg for this part of the nginx config! https://gist.github.com/bastianallgeier/c2e1f1e519f5f2943ec4#gistcomment-1556246
 

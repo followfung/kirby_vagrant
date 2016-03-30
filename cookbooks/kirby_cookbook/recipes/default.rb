@@ -16,9 +16,14 @@ execute 'Install Kirby CLI' do
   command 'composer install'
 end
 
-# # install and configure dependencies
-# include_recipe 'kirby::nginx'
+# install and configure dependencies
+include_recipe 'kirby::nginx'
 
+execute 'Install Kirby!' do
+  user node['nginx']['user']
+  group node['nginx']['group']
+  cwd "#{node['nginx']['default_root']}/kirby"
+end
 # # grab Kirby Starterkit from GitHub
 # git node['kirby']['install_path'] do
 #   repository node['kirby']['git_repo']

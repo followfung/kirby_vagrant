@@ -3,6 +3,11 @@ default['kirby']['cli']['git_repo'] = 'git://github.com/getkirby/cli.git'
 default['kirby']['cli']['src_path'] = '/usr/local/src/kirby_cli'
 default['kirby']['cli']['bin_path'] = '/usr/local/bin'
 
+default['kirby']['kirby_root'] = "#{node['nginx']['default_root']}/kirby"
+
+default['kirby']['access_log'] = "#{node['nginx']['log_dir']}/kirby/access.log"
+default['kirby']['error_log'] = "#{node['nginx']['log_dir']}/kirby/error.log"
+
 # Advanced configuration options. These are set to be the defaults
 # from the Kirby docs. More info: https://getkirby.com/docs/cheatsheet#options
 default['kirby']['options']['cache'] = false
@@ -72,8 +77,6 @@ default['kirby']['options']['url'] = false
 
 # nginx
 default['nginx']['default_site_enabled'] = false
-default['nginx']['access_log'] = '/var/log/nginx/access.log'
-default['nginx']['error_log'] = '/var/log/nginx/error.log'
 
 # Kirby server configuration
 default['kirby']['dir_name'] = 'kirby' # kirby web directory name
@@ -83,7 +86,7 @@ default['kirby']['git_repo'] = 'git://github.com/getkirby/starterkit.git'
 
 # If provisioning on a Vagrant VM, set this to where your
 # shared folder is mounted, usually this will be /vagrant
-default['kirby']['nginx_server_name'] = 'localhost'
+default['kirby']['server_name'] = 'localhost'
 default['kirby']['vagrant_share'] = '/vagrant'
 
 ############################################################

@@ -40,8 +40,7 @@ Vagrant.configure(2) do |config|
       },
       kirby: {
         url: 'http://' + conf[:vm_hostname],
-        install_type: 'vagrant',
-        nginx_server_name: conf[:vm_hostname]
+        server_name: conf[:vm_hostname]
       }
     }
 
