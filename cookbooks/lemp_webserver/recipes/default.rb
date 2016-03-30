@@ -10,17 +10,12 @@ package 'git'
 # install php
 include_recipe 'php'
 
+package 'php5-curl'
+
+include_recipe 'composer'
+
 # install nginx
 include_recipe 'nginx'
-
-# Create and start MySQL instance
-mysql_service 'default' do
-  bind_address '127.0.0.1'
-  version '5.6'
-  initial_root_password 'please change me'
-  action [:create, :start]
-  not_if { node['lemp_webserver']['skip_mysql'] }
-end
 
 # Configure sshd: Disable password authentication and root login
 openssh_server node['sshd']['config_file'] do
@@ -47,6 +42,6 @@ firewall_rule 'http' do
   action :create
 end
 
-php_fpm_pool "default" do
+php_fpm_pool 'default' do
   action :install
 end

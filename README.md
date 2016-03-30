@@ -8,11 +8,12 @@ Requirements
 * vagrant-hostsupdater plugin
 
 This configuration was developed with the following configuration, but later versions should probably work!
-* ChefDK `v0.5.1`
-* VirtualBox `v4.3.26`
-* Vagrant `v1.7.2`
-* vagrant-berkshelf `v4.0.4`
+* ChefDK `v0.11.2`
+* VirtualBox `v5.0.16`
+* Vagrant `v1.8.2`
+* vagrant-berkshelf `v4.1.0`
 * vagrant-omnibus `v1.4.1`
+* vagrant-hostupdater `v1.0.2`
 
 ## Known Issues
 * On Windows machines, sometimes the hostsupdater plugin can't update the hosts file because of permissions. If this happens you should update it manually.

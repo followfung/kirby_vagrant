@@ -1,9 +1,9 @@
 Vagrant.configure(2) do |config|
   # Configuration variables for this VM
   conf = {
-    vm_box: 'ubuntu/trusty64', 
+    vm_box: 'ubuntu/trusty64',
     private_network_ip: '192.168.33.10',
-    vm_hostname: 'vagrant.dev', 
+    vm_hostname: 'vagrant.dev',
     vm_memory: 4096,
     vm_cpus: 2
   }
@@ -40,8 +40,7 @@ Vagrant.configure(2) do |config|
       },
       kirby: {
         url: 'http://' + conf[:vm_hostname],
-        install_type: 'vagrant',
-        nginx_server_name: conf[:vm_hostname]
+        server_name: conf[:vm_hostname]
       }
     }
 

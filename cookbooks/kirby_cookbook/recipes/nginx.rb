@@ -10,9 +10,16 @@ nginx_site 'kirby' do
   notifies :reload, 'service[nginx]', :delayed
 end
 
-# create public web directory
-directory node['nginx']['www_dir'] do
+# create log directory
+directory node['kirby']['log_dir'] do
   recursive true
-  owner 'www-data'
-  group 'www-data'
+  owner node['nginx']['user']
+  group node['nginx']['group']
+end
+
+# create public web directory
+directory node['nginx']['default_root'] do
+  recursive true
+  owner node['nginx']['user']
+  group node['nginx']['group']
 end
