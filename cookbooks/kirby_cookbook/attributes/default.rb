@@ -72,7 +72,6 @@ default['kirby']['options']['url'] = false
 
 # nginx
 default['nginx']['default_site_enabled'] = false
-default['nginx']['www_dir'] = '/var/www'
 default['nginx']['access_log'] = '/var/log/nginx/access.log'
 default['nginx']['error_log'] = '/var/log/nginx/error.log'
 
