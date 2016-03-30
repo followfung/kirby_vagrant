@@ -1,3 +1,8 @@
+# Kirby CLI stuff
+default['kirby']['cli']['git_repo'] = 'git://github.com/getkirby/cli.git'
+default['kirby']['cli']['src_path'] = '/usr/local/src/kirby_cli'
+default['kirby']['cli']['bin_path'] = '/usr/local/bin'
+
 # Advanced configuration options. These are set to be the defaults
 # from the Kirby docs. More info: https://getkirby.com/docs/cheatsheet#options
 default['kirby']['options']['cache'] = false

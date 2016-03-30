@@ -11,8 +11,8 @@ nginx_site 'kirby' do
 end
 
 # create public web directory
-directory node['nginx']['www_dir'] do
+directory node['nginx']['default_root'] do
   recursive true
-  owner 'www-data'
-  group 'www-data'
+  owner node['nginx']['nginx_user']
+  group node['nginx']['nginx_group']
 end

@@ -4,9 +4,16 @@
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
-# install kirby cli
+# Clone down Kirby CLI repo from GitHub
+git node['kirby']['cli']['src_path'] do
+  repository node['kirby']['cli']['git_repo']
+end
+link "#{node['kirby']['cli']['bin_path']}/kirby" do
+  to "#{node['kirby']['cli']['src_path']}/kirby"
+end
 execute 'Install Kirby CLI' do
-  command 'composer global require getkirby/cli'
+  cwd node['kirby']['cli']['src_path']
+  command 'composer install'
 end
 
 # # install and configure dependencies
