@@ -9,6 +9,9 @@ package 'git'
 
 # install php
 include_recipe 'php'
+
+package 'php5-curl'
+
 include_recipe 'composer'
 
 # install nginx
