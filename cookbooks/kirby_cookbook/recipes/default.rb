@@ -4,6 +4,11 @@
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
+# install kirby cli
+execute 'Install Kirby CLI' do
+  command 'composer global require getkirby/cli'
+end
+
 # # install and configure dependencies
 # include_recipe 'kirby::nginx'
 
