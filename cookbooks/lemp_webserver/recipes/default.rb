@@ -9,6 +9,7 @@ package 'git'
 
 # install php
 include_recipe 'php'
+include_recipe 'composer'
 
 # install nginx
 include_recipe 'nginx'
@@ -47,6 +48,6 @@ firewall_rule 'http' do
   action :create
 end
 
-php_fpm_pool "default" do
+php_fpm_pool 'default' do
   action :install
 end
