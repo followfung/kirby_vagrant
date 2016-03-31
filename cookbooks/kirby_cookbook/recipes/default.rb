@@ -21,8 +21,8 @@ end
 include_recipe 'kirby::nginx'
 
 execute 'Install Kirby!' do
-  user node['nginx']['user']
-  group node['nginx']['group']
+  user node['kirby']['user']
+  group node['kirby']['group']
   cwd node['nginx']['default_root']
   command 'kirby install'
 end

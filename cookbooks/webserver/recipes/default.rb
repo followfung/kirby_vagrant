@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: lemp_webserver
+# Cookbook Name:: webserver
 # Recipe:: default
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
@@ -9,10 +9,11 @@ package 'git'
 
 # install php
 include_recipe 'php'
-
 package 'php5-curl'
-
 include_recipe 'composer'
+php_fpm_pool 'default' do
+  action :install
+end
 
 # install nginx
 include_recipe 'nginx'
@@ -26,29 +27,9 @@ end
 
 # Configure sshd: Disable password authentication and root login
 openssh_server node['sshd']['config_file'] do
-  cookbook 'lemp_webserver'
+  cookbook 'webserver'
   source 'sshd_config.erb'
 end
 
 # Configure firewall
-firewall 'default' do
-  action :install
-end
-
-# Allow SSH so we don't lock ourselves out
-firewall_rule 'ssh' do
-  port     22
-  command  :allow
-  action :create
-end
-
-# Allow HTTP
-firewall_rule 'http' do
-  port     80
-  command  :allow
-  action :create
-end
-
-php_fpm_pool 'default' do
-  action :install
-end
+include_recipe 'webserver::firewall'
