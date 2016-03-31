@@ -37,7 +37,6 @@ Vagrant.configure(2) do |config|
   config.vm.provision :chef_solo do |chef|
     chef.json = {
       kirby: {
-        url: 'http://' + conf[:vm_hostname],
         server_name: conf[:vm_hostname]
       }
     }
