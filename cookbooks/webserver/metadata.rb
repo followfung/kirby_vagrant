@@ -1,4 +1,4 @@
-name             'lemp_webserver'
+name             'webserver'
 maintainer       'Patrick Fung'
 maintainer_email 'patrick@makestuffdostuff.com'
 license          'All rights reserved'
