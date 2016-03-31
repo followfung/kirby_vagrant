@@ -35,16 +35,13 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision :chef_solo do |chef|
     chef.json = {
-      lemp_webserver: {
-        skip_mysql: true
-      },
       kirby: {
         url: 'http://' + conf[:vm_hostname],
         server_name: conf[:vm_hostname]
       }
     }
 
-    chef.add_recipe 'lemp_webserver'
+    chef.add_recipe 'webserver'
     chef.add_recipe 'kirby'
   end
 end
