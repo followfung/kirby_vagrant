@@ -9,8 +9,8 @@ package 'git'
 
 # install php
 include_recipe 'php'
-package 'php5-curl'
-include_recipe 'composer'
+
+# install and activate php-fpm
 php_fpm_pool 'default' do
   action :install
 end

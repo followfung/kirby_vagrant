@@ -4,6 +4,12 @@
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
+# Kirby CLI requires composer to be installed
+include_recipe 'composer'
+
+# Kirby CLI depends on the PHP Curl extensions
+package 'php5-curl'
+
 # Clone down Kirby CLI repo from GitHub
 git node['kirby_cli']['src_path'] do
   repository node['kirby_cli']['git_repo']
