@@ -1,0 +1,7 @@
+name             'kirby_cli'
+maintainer       'The Authors'
+maintainer_email 'you@example.com'
+license          'all_rights'
+description      'Installs/Configures kirby'
+long_description 'Installs/Configures kirby'
+version          '0.1.0'
