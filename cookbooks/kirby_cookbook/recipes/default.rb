@@ -10,13 +10,7 @@ include_recipe 'kirby_cli'
 # install and configure dependencies
 include_recipe 'kirby::nginx'
 
-# execute 'Install Kirby!' do
-#   user node['kirby']['user']
-#   group node['kirby']['group']
-#   cwd node['nginx']['default_root']
-#   command 'kirby install'
-# end
-
+# Install Kirby!
 kirby node['nginx']['default_root'] do
   action :install
 end

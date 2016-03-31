@@ -30,8 +30,9 @@ Vagrant.configure(2) do |config|
     vb.customize ['modifyvm', :id, '--natdnshostresolver1', 'on']
   end
 
-  config.berkshelf.enabled = true # enable berkshelf
-  config.omnibus.chef_version = '12.3.0' # version pin 12.3.0
+  config.berkshelf.enabled = true
+  # Version pin chef-clinet to 12.8.1 for consistent cookbook development
+  config.omnibus.chef_version = '12.8.1'
 
   config.vm.provision :chef_solo do |chef|
     chef.json = {
