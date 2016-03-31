@@ -16,10 +16,3 @@ directory node['kirby']['log_dir'] do
   owner node['nginx']['user']
   group node['nginx']['group']
 end
-
-# create public web directory
-directory node['nginx']['default_root'] do
-  recursive true
-  owner node['nginx']['user']
-  group node['nginx']['group']
-end

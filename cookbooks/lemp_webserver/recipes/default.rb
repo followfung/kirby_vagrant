@@ -17,6 +17,13 @@ include_recipe 'composer'
 # install nginx
 include_recipe 'nginx'
 
+# create public web directory
+directory node['nginx']['default_root'] do
+  recursive true
+  owner node['nginx']['user']
+  group node['nginx']['group']
+end
+
 # Configure sshd: Disable password authentication and root login
 openssh_server node['sshd']['config_file'] do
   cookbook 'lemp_webserver'
