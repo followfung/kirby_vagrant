@@ -31,7 +31,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.berkshelf.enabled = true
-  # Version pin chef-clinet to 12.8.1 for consistent cookbook development
+  # Version pin chef-client to 12.8.1 for consistent cookbook development
   config.omnibus.chef_version = '12.8.1'
 
   config.vm.provision :chef_solo do |chef|
