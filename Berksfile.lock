@@ -1,8 +1,10 @@
 DEPENDENCIES
   kirby
     path: cookbooks/kirby_cookbook
-  lemp_webserver
-    path: cookbooks/lemp_webserver
+  kirby_cli
+    path: cookbooks/kirby_cli
+  webserver
+    path: cookbooks/webserver
 
 GRAPH
   7-zip (1.0.2)
@@ -23,15 +25,10 @@ GRAPH
   iis (4.1.6)
     windows (>= 1.34.6)
   kirby (0.1.0)
+    kirby_cli (>= 0.0.0)
     nginx (~> 2.7.6)
-  lemp_webserver (0.1.0)
-    composer (~> 2.2.1)
-    firewall (~> 2.4.0)
-    mysql (~> 6.1.2)
-    nginx (~> 2.7.6)
-    php (~> 1.7.2)
-    sshd (~> 1.1.3)
-  mysql (6.1.2)
+  kirby_cli (0.1.0)
+  mysql (6.1.3)
     smf (>= 0.0.0)
     yum-mysql-community (>= 0.0.0)
   nginx (2.7.6)
@@ -58,6 +55,13 @@ GRAPH
   smf (2.2.8)
     rbac (>= 1.0.1)
   sshd (1.1.3)
+  webserver (0.1.0)
+    composer (~> 2.2.1)
+    firewall (~> 2.4.0)
+    mysql (~> 6.1.2)
+    nginx (~> 2.7.6)
+    php (~> 1.7.2)
+    sshd (~> 1.1.3)
   windows (1.39.1)
     chef_handler (>= 0.0.0)
   xml (2.0.0)
@@ -66,5 +70,5 @@ GRAPH
   yum (3.10.0)
   yum-epel (0.6.5)
     yum (~> 3.2)
-  yum-mysql-community (0.1.21)
+  yum-mysql-community (0.2.0)
     yum (>= 3.2)
