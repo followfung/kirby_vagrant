@@ -25,7 +25,7 @@ action :install do
 
   # enable nginx config for kirby
   nginx_site new_resource.name do
-    template 'kirby.erb'
+    template 'kirby_nginx_conf.erb'
     variables(
       install_dir: install_dir,
       log_dir: log_dir,
