@@ -7,4 +7,4 @@ long_description 'Installs/Configures kirby'
 version          '0.1.0'
 
 depends 'nginx', '~> 2.7.6'
-depends 'kirby_cli'
+depends 'composer', '~> 2.2.1'

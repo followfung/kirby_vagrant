@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: kirby_cli
+# Cookbook Name:: kirby
 # Resource:: kirby
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.

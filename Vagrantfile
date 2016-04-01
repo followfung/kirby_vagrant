@@ -35,6 +35,8 @@ Vagrant.configure(2) do |config|
   config.omnibus.chef_version = '12.8.1'
 
   config.vm.provision :chef_solo do |chef|
+    chef.log_level = :info
+
     chef.json = {
       kirby: {
         server_name: conf[:vm_hostname]
@@ -43,5 +45,6 @@ Vagrant.configure(2) do |config|
 
     chef.add_recipe 'webserver'
     chef.add_recipe 'kirby'
+    chef.add_recipe 'kirby::install_site'
   end
 end
