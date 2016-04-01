@@ -6,11 +6,11 @@ server {
   server_name <%= node['kirby']['server_name'] %>;
 
   include /etc/nginx/mime.types;
-  root <%= node['nginx']['default_root'] %>/kirby;
+  root <%= @install_dir %>;
   index  index.php index.html index.htm;
   
-  access_log <%= node['kirby']['log_dir'] %>/access.log;
-  error_log  <%= node['kirby']['log_dir'] %>/error.log;
+  access_log <%= @log_dir %>/access.log;
+  error_log  <%= @log_dir %>/error.log;
 
   # Thanks to JimmyRittenborg for this part of the nginx config! https://gist.github.com/bastianallgeier/c2e1f1e519f5f2943ec4#gistcomment-1556246
 
