@@ -2,8 +2,8 @@
 # TO THIS FILE WILL BE LOST WHEN THE CHEF PROVISIONER RUNS.
 
 server {
-  listen 80 default_server;
-  server_name <%= node['kirby']['server_name'] %>;
+  listen 80;
+  server_name <%= @server_name %>;
 
   include /etc/nginx/mime.types;
   root <%= @install_dir %>;

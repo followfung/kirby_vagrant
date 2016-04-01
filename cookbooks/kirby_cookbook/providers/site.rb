@@ -14,6 +14,8 @@ action :install do
   install_dir = "#{node['nginx']['default_root']}/#{new_resource.name}"
   log_dir =     "#{node['nginx']['log_dir']}/#{new_resource.name}"
 
+  server_name = new_resource.params.server_name
+
   # create log directory
   directory log_dir do
     recursive true
@@ -26,9 +28,9 @@ action :install do
     template 'kirby.erb'
     variables(
       install_dir: install_dir,
-      log_dir: log_dir
+      log_dir: log_dir,
+      server_name: server_name
     )
-    notifies :reload, 'service[nginx]', :delayed
   end
 
   execute "Install Kirby site to #{install_dir}" do

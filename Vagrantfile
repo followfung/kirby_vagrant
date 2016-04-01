@@ -39,12 +39,15 @@ Vagrant.configure(2) do |config|
 
     chef.json = {
       kirby: {
-        server_name: conf[:vm_hostname]
+        sites: {
+          kirby: {
+            server_name: conf[:vm_hostname]
+          }
+        }
       }
     }
 
     chef.add_recipe 'webserver'
-    chef.add_recipe 'kirby'
     chef.add_recipe 'kirby::install_site'
   end
 end

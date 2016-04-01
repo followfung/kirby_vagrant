@@ -7,8 +7,6 @@
 default_action :install
 actions :install
 
-attribute :install_dir, kind_of: String
-attribute :user, kind_of: String, default: node['kirby_cli']['user']
-attribute :group, kind_of: String, default: node['kirby_cli']['group']
+attribute :params, kind_of: Hash
 
 provides :kirby_site
