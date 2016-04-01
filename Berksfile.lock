@@ -1,8 +1,6 @@
 DEPENDENCIES
   kirby
     path: cookbooks/kirby_cookbook
-  kirby_cli
-    path: cookbooks/kirby_cli
   webserver
     path: cookbooks/webserver
 
@@ -25,9 +23,6 @@ GRAPH
   iis (4.1.6)
     windows (>= 1.34.6)
   kirby (0.1.0)
-    composer (~> 2.2.1)
-    nginx (~> 2.7.6)
-  kirby_cli (0.1.0)
     composer (~> 2.2.1)
     nginx (~> 2.7.6)
   mysql (6.1.3)

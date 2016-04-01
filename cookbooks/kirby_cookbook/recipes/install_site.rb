@@ -21,6 +21,9 @@ nginx_site 'kirby' do
 end
 
 # Install Kirby!
-kirby node['nginx']['default_root'] do
-  action :install
-end
+# kirby_site node['nginx']['default_root'] do
+#   action :install
+# end
+
+# Install Kirby
+kirby_site 'kirby'
