@@ -3,12 +3,7 @@
 ### Seriously, consider yourself warned.                 ###
 ############################################################
 
-default['kirby']['log_dir'] = "#{node['nginx']['log_dir']}/kirby"
-default['kirby']['default_root'] = "#{node['nginx']['default_root']}/kirby"
 default['kirby']['server_name'] = 'localhost'
-
-default['kirby']['user'] = node['nginx']['user'] || node['kirby']['user']
-default['kirby']['group'] = node['nginx']['group'] || node['kirby']['group']
 
 # Kirby CLI stuff
 default['kirby_cli']['git_repo'] = 'git://github.com/getkirby/cli.git'

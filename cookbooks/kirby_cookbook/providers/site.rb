@@ -12,11 +12,19 @@ use_inline_resources
 
 action :install do
   install_dir = "#{node['nginx']['default_root']}/#{new_resource.name}"
+  log_dir = "#{node['nginx']['log_dir']}/#{new_resource.name}"
+
+  # create log directory
+  directory log_dir do
+    recursive true
+    owner node['nginx']['user']
+    group node['nginx']['group']
+  end
 
   execute "Install Kirby site to #{install_dir}" do
     cwd node['nginx']['default_root']
-    user new_resource.user
-    group new_resource.group
+    user node['nginx']['user']
+    group node['nginx']['group']
     command "kirby install #{new_resource.name}"
     creates "#{install_dir}/index.php"
   end
